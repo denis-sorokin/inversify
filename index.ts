@@ -10,9 +10,11 @@ import * as morgan from "morgan";
 import { server } from "./src/server";
 import { config } from "./src/config";
 
-
 const debug = Debug("app:server");
-
+debug.enabled = true;
+debug('HELLO');
+console.log(process.env.PORT);
+console.log(process.env.DEBUG);
 // config server
 server.setConfig(_app => {
     _app.use(morgan("dev"));
@@ -29,10 +31,12 @@ const app = server.build();
 const logStream = fs.createWriteStream(path.join(__dirname, "access.log"), { flags: "a" });
 app.use(morgan("combined", { stream: logStream }));
 
-const port = process.env.port;
-const env = process.env.NODE_ENV;
+const port = config.PORT;
+const env = app.get("env");
 
 app.listen(port, () => {
     debug(`App is running at http://localhost:${port} in ${env} mode`);
     debug("Press Ctrl + C for stop.");
 });
+
+export { app };
