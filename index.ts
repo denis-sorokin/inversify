@@ -29,8 +29,8 @@ const app = server.build();
 const logStream = fs.createWriteStream(path.join(__dirname, "access.log"), { flags: "a" });
 app.use(morgan("combined", { stream: logStream }));
 
-const port = app.get("port");
-const env = app.get("env");
+const port = process.env.port;
+const env = process.env.NODE_ENV;
 
 app.listen(port, () => {
     debug(`App is running at http://localhost:${port} in ${env} mode`);
