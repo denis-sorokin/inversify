@@ -1,22 +1,22 @@
-import { NextFunction, Request, Response } from 'express';
-import { inject } from 'inversify';
-import { controller, httpGet } from 'inversify-express-utils';
-import { TYPES } from '../services/types';
-import { UserService } from '../services/user';
+import { NextFunction, Request, Response } from "express";
+import { inject } from "inversify";
+import { controller, httpGet } from "inversify-express-utils";
+import { TYPES } from "../services/types";
+import { UserService } from "../services/user";
 
-@controller('/users')
+@controller("/users")
 export class UserController {
     constructor(@inject(TYPES.UserService) private _userService: UserService) {
     }
 
-    @httpGet('/')
+    @httpGet("/")
     public getAllUsers(req: Request, res: Response, next: NextFunction) {
         return this._userService.getAllUsers()
             .then((users) => {
                 const mappedUsers = users.map((user) => {
                     return {
                         id: user.id,
-                        name: user.surname + ' ' + user.name,
+                        name: user.surname + " " + user.name,
                     };
                 });
                 return res.json({
@@ -26,13 +26,13 @@ export class UserController {
             .catch(next);
     }
 
-    @httpGet('/:id')
+    @httpGet("/:id")
     public getUserById(req: Request, res: Response, next: NextFunction) {
         return this._userService.getUserById(req.params.id)
             .then((user) => {
                 const userSafeData = {
                     id: user.id,
-                    name: user.surname + ' ' + user.name,
+                    name: user.surname + " " + user.name,
                 };
                 return res.json({
                     user: userSafeData,
@@ -41,13 +41,13 @@ export class UserController {
             .catch(next);
     }
 
-    @httpGet('/:id/info')
+    @httpGet("/:id/info")
     public getUserInfo(req: Request, res: Response, next: NextFunction) {
         return this._userService.getUserById(req.params.id)
             .then((user) => {
                 const userSafeData = {
                     id: user.id,
-                    name: user.surname + ' ' + user.name,
+                    name: user.surname + " " + user.name,
                     department: user.department,
                     email: user.email,
                 };

@@ -1,1 +1,1 @@
-import '../controllers/user';
+import "../controllers/user";

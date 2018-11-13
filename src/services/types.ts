@@ -1,6 +1,6 @@
 const TYPES = {
-    MysqlConnectionService: Symbol.for('MysqlConnectionService'),
-    UserService: Symbol.for('UserService'),
+    // MysqlConnectionService: Symbol.for("MysqlConnectionService"),
+    UserService: Symbol.for("UserService"),
 };
 
 export { TYPES };

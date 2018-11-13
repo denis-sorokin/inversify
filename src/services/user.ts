@@ -1,7 +1,7 @@
-import { inject, injectable } from 'inversify';
-import { Iuser } from '../interfaces/iuser';
-import { TYPES } from '../resources/types';
-import { UserFsResource } from '../resources/user/user.fs';
+import { inject, injectable } from "inversify";
+import { Iuser } from "../interfaces/iuser";
+import { TYPES } from "../resources/types";
+import { UserFsResource } from "../resources/user/user.fs";
 
 @injectable()
 export class UserService {
