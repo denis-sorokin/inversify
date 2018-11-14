@@ -3,11 +3,12 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty && cp .env dist/.env",
+        "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty && npm run cp",
+        "cp": "cp .env dist/.env && cp -r data dist",
         "clean": "/bin/rm -rf ./dist",
         "lint": "tslint --force --format verbose \"src/**/*.ts\"",
         "start": "npm run build && npm run serve",
-        "start:dev": "npm run build && npm run serve:dev",
+        "start:dev": "npm run build --watch && npm run serve:dev",
         "serve": ". ./.env & node ./dist/index.js",
         "serve:debug": "set DEBUG=app* && node ./dist/index.js",
         "serve:pm2": "pm2 start pm2.json",
@@ -43,5 +44,8 @@
         "@types/morgan": "^1.7.35",
         "@types/node": "^10.12.6",
         "@types/supertest": "^2.0.6"
+    },
+    "_moduleAliases": {
+        "@": "/"
     }
 }

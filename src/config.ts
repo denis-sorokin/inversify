@@ -6,7 +6,7 @@ const testConfig = {
 let config = {
     PORT: process.env.PORT || normalizePort("1357"),
     SECRET_TOKEN_KEY: process.env.TOKEN_SECRET || "#tokenSecret#",
-    FS_DATA_USERS_PATH: process.env.FS_DATA_USERS_PATH || "./data/admin.json",
+    FS_DATA_USERS_PATH: process.env.FS_DATA_USERS_PATH || "data/user.json",
     DATABASE: process.env.DATABASE || "mysql://localhost:3306/learn",
     DB_NAME: process.env.DB_NAME || "learn",
     DB_USER: process.env.DB_USER || "root",

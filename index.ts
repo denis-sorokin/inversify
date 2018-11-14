@@ -12,9 +12,7 @@ import { config } from "./src/config";
 
 const debug = Debug("app:server");
 debug.enabled = true;
-debug('HELLO');
-console.log(process.env.PORT);
-console.log(process.env.DEBUG);
+
 // config server
 server.setConfig(_app => {
     _app.use(morgan("dev"));
@@ -22,6 +20,8 @@ server.setConfig(_app => {
     _app.use(express.urlencoded({ extended: false, limit: "10mb" }));
     _app.use(bodyParser());
     _app.use(express.static(path.join(__dirname, "public")));
+})
+.setErrorConfig((_app) => {
 });
 
 // init app

@@ -1,9 +1,23 @@
-{
-    "0": {
+[
+    {
         "name": "Alosha",
         "surname": "Shkolnik",
         "department": "pontu",
         "login": "shkolota",
         "password": "prodakshen"
+    },
+    {
+        "name": "Osel",
+        "surname": "Smarshrutki",
+        "department": "public",
+        "login": "budlo",
+        "password": "public"
+    },
+    {
+        "name": "Stupid",
+        "surname": "Agr",
+        "department": "pontu",
+        "login": "starui",
+        "password": "stupid"
     }
-}
+]
